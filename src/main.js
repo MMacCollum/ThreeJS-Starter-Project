@@ -21,4 +21,22 @@ camera.position((z = -30));
 
 renderer.render(scene, camera);
 
-const geometry = new THREE.RingGeometry();
+const geometry = new THREE.IcosahedronGeometry(10);
+const material_basic = new THREE.MeshBasicMaterial({
+  color: 0xff6007,
+  wireframe: true,
+});
+//const material = new THREE.MeshStandardMaterial();
+const icosahedron = new THREE.Mesh(geometry, material_basic);
+
+scene.add(icosahedron);
+
+function animate() {
+  requestAnimationFrame(animate);
+
+  icosahedron.rotation.x += 0.01;
+  icosahedron.rotation.y += 0.01;
+  icosahedron.rotation.z += 0.05;
+
+  renderer.render(scene, camera);
+}
